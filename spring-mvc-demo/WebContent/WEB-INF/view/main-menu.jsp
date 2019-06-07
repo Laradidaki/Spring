@@ -9,5 +9,9 @@
 <body>
 <h1>Spring mvc - Home page</h1>
 <a href="hello/showForm">Hello World Form</a>
+<br><br>
+<a href="student/showForm">Student Registration Form</a>
+<br><br>
+<a href="user/showForm">User Registration Form</a>
 </body>
 </html>
