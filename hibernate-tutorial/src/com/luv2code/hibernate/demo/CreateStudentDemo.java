@@ -23,6 +23,7 @@ public class CreateStudentDemo {
 			// create a student object
 			System.out.println("Creating new student object...");
 			Student tempStudent = new Student("Paul", "Doe", "paul@luv2code.com");
+			Student tempStudent2=new Student("Pinco", "Pallo", "pincopallo@gmail.com");
 			
 			// start a transaction
 			session.beginTransaction();
@@ -30,6 +31,7 @@ public class CreateStudentDemo {
 			// save the student object
 			System.out.println("Saving the student...");
 			session.save(tempStudent);
+			session.save(tempStudent2);
 			
 			// commit transaction
 			session.getTransaction().commit();
