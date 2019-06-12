@@ -1,6 +1,4 @@
 package com.timesheet.entity;
-
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
