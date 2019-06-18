@@ -15,6 +15,9 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
 
 @Entity
 @Table(name="ticket")
@@ -24,28 +27,45 @@ public class Ticket {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="id")
 	private Integer idTicket ;
+	
 	@Column(name="client")
 	private String client;
+	
+	@Temporal(TemporalType.DATE)
 	@Column(name="start_date")
 	private Date startDate;
+	
+	@Temporal(TemporalType.DATE)
 	@Column(name="release_date")
 	private Date releaseDate;
+	
+	@Column(name="reference_application")
+	private String referenceApplication;
+	
 	@Column(name="estimate")
 	private Double estimate;
+	
 	@Column(name="description")
 	private String description;
+	
 	@Column(name="tot_working_hours")
 	private Double totWorkingHours;
+	
 	@Column(name="production_order")
 	private String productionOrder;
+	
 	@Column(name="note")
 	private String note;
+	
 	@Column(name="priority")
 	private String priority;
+	
 	@Column(name="ticket_status")
 	private String ticketStatus;
+	
 	@Column(name="ticket_source")
 	private String ticketSource;
+	
 	@Column(name="ticket_type")
 	private String ticketType;
 	
@@ -62,13 +82,14 @@ public class Ticket {
 	
 	}
 
-	public Ticket(String client, Date startDate, Date releaseDate, Double estimate, String description,
+	public Ticket(String client, Date startDate, Date releaseDate,String referenceApplication, Double estimate, String description,
 			Double totWorkingHours, String productionOrder, String note, String priority, String ticketStatus,
 			String ticketSource, String ticketType) {
 		super();
 		this.client = client;
 		this.startDate = startDate;
 		this.releaseDate = releaseDate;
+		this.referenceApplication= referenceApplication;
 		this.estimate = estimate;
 		this.description = description;
 		this.totWorkingHours = totWorkingHours;
@@ -199,6 +220,15 @@ public class Ticket {
 	public void setEmployees(List<Employee> employees) {
 		this.employees = employees;
 	}
+	
+
+	public String getReferenceApplication() {
+		return referenceApplication;
+	}
+
+	public void setReferenceApplication(String referenceApplication) {
+		this.referenceApplication = referenceApplication;
+	}
 
 	//add a convenience method
 	public void addEmployee(Employee tempEmployee) {
@@ -211,7 +241,7 @@ public class Ticket {
 	@Override
 	public String toString() {
 		return "Ticket [idTicket=" + idTicket + ", client=" + client + ", startDate=" + startDate + ", releaseDate="
-				+ releaseDate + ", estimate=" + estimate + ", description=" + description + ", totWorkingHours="
+				+ releaseDate + ", referenceApplication=" + referenceApplication + ",+ estimate=" + estimate + ", description=" + description + ", totWorkingHours="
 				+ totWorkingHours + ", productionOrder=" + productionOrder + ", note=" + note + ", priority=" + priority
 				+ ", ticketStatus=" + ticketStatus + ", ticketSource=" + ticketSource + ", ticketType=" + ticketType
 				+ "]";
